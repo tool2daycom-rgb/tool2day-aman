@@ -2,6 +2,10 @@
 
 import Link from "next/link";
 import { getCountry, type CountryId } from "@/lib/countries";
+import {
+  STOPNCII_CREATE_CASE,
+  TAKE_IT_DOWN_CREATE_CASE,
+} from "@/lib/official-tools";
 import type { WizardAnswers } from "@/lib/wizard";
 
 type Props = {
@@ -141,12 +145,12 @@ export function PathResult({ answers, onRestart }: Props) {
       <div className="mt-5 grid gap-3">
         {isAdult ? (
           <a
-            href="https://stopncii.org"
+            href={STOPNCII_CREATE_CASE}
             target="_blank"
             rel="noopener noreferrer"
             className="block rounded-[22px] bg-[var(--accent)] px-5 py-4 text-white shadow-sm transition hover:brightness-110"
           >
-            <span className="font-extrabold">افتح StopNCII.org الآن — للبالغين</span>
+            <span className="font-extrabold">ابدأ قضية StopNCII الآن — للبالغين</span>
             <span className="mt-1 block text-sm font-normal text-white/85">
               الأداة الرسمية · ثم ارجع لشرح أمان إن احتجت
             </span>
@@ -162,12 +166,12 @@ export function PathResult({ answers, onRestart }: Props) {
         ) : null}
         {isMinor ? (
           <a
-            href="https://takeitdown.ncmec.org"
+            href={TAKE_IT_DOWN_CREATE_CASE}
             target="_blank"
             rel="noopener noreferrer"
             className="block rounded-[22px] bg-[var(--ink)] px-5 py-4 text-white shadow-sm transition hover:brightness-110"
           >
-            <span className="font-extrabold">افتح Take It Down الآن — للقاصرين</span>
+            <span className="font-extrabold">ابدأ قضية Take It Down الآن — للقاصرين</span>
             <span className="mt-1 block text-sm font-normal text-white/85">
               الأداة الرسمية من NCMEC
             </span>
@@ -226,12 +230,12 @@ function AlsoDigitalTools({ countryId }: { countryId: string | null }) {
       </p>
       <div className="mt-4 grid gap-3">
         <a
-          href="https://stopncii.org"
+          href={STOPNCII_CREATE_CASE}
           target="_blank"
           rel="noopener noreferrer"
           className="block rounded-2xl bg-[var(--accent)] px-4 py-3 text-sm font-extrabold text-white transition hover:brightness-110"
         >
-          StopNCII.org — للبالغين (18+)
+          ابدأ قضية StopNCII — للبالغين (18+)
         </a>
         <Link
           href={`/stopncii${q}`}
@@ -240,12 +244,12 @@ function AlsoDigitalTools({ countryId }: { countryId: string | null }) {
           شرح StopNCII بالعربي
         </Link>
         <a
-          href="https://takeitdown.ncmec.org"
+          href={TAKE_IT_DOWN_CREATE_CASE}
           target="_blank"
           rel="noopener noreferrer"
           className="block rounded-2xl bg-[var(--ink)] px-4 py-3 text-sm font-extrabold text-white transition hover:brightness-110"
         >
-          Take It Down — للقاصرين (أقل من 18)
+          ابدأ قضية Take It Down — للقاصرين (أقل من 18)
         </a>
         <Link
           href={`/take-it-down${q}`}

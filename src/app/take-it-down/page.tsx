@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AmanShell } from "@/components/aman-shell";
 import { GuideHelplines } from "@/components/guide-helplines";
+import { TAKE_IT_DOWN_CREATE_CASE } from "@/lib/official-tools";
 
 export const metadata: Metadata = {
   title: "Take It Down بالعربي — للقاصرين",
@@ -22,12 +23,12 @@ export default async function TakeItDownPage({ searchParams }: Props) {
       </div>
 
       <a
-        href="https://takeitdown.ncmec.org"
+        href={TAKE_IT_DOWN_CREATE_CASE}
         target="_blank"
         rel="noopener noreferrer"
         className="aman-btn w-full text-center sm:w-auto"
       >
-        افتح Take It Down الآن
+        ابدأ قضية Take It Down الآن
       </a>
 
       <p className="mt-8 text-xs font-bold text-[var(--accent-dark)]">
@@ -69,12 +70,12 @@ export default async function TakeItDownPage({ searchParams }: Props) {
 
       <div className="mt-8 flex flex-wrap gap-3">
         <a
-          href="https://takeitdown.ncmec.org"
+          href={TAKE_IT_DOWN_CREATE_CASE}
           target="_blank"
           rel="noopener noreferrer"
           className="aman-btn"
         >
-          فتح Take It Down
+          ابدأ قضية Take It Down
         </a>
         <Link href="/stopncii" className="aman-btn aman-btn-dark">
           أنا بالغ — StopNCII

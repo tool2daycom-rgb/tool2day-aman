@@ -5,6 +5,7 @@ import { AmanShell } from "@/components/aman-shell";
 import { ArtFrame } from "@/components/art-frame";
 import { GuideHelplines } from "@/components/guide-helplines";
 import { IllustProtectHand } from "@/components/illustrations";
+import { STOPNCII_CREATE_CASE } from "@/lib/official-tools";
 
 export const metadata: Metadata = {
   title: "StopNCII بالعربي — للبالغين",
@@ -27,12 +28,12 @@ export default async function StopNciiPage({ searchParams }: Props) {
       </div>
 
       <a
-        href="https://stopncii.org"
+        href={STOPNCII_CREATE_CASE}
         target="_blank"
         rel="noopener noreferrer"
         className="aman-btn w-full text-center sm:w-auto"
       >
-        افتح StopNCII.org الآن
+        ابدأ قضية StopNCII الآن
       </a>
 
       <p className="mt-8 text-xs font-bold text-[var(--accent-dark)]">للبالغين · 18+</p>
@@ -112,12 +113,12 @@ export default async function StopNciiPage({ searchParams }: Props) {
 
       <div className="mt-8 flex flex-wrap gap-3">
         <a
-          href="https://stopncii.org"
+          href={STOPNCII_CREATE_CASE}
           target="_blank"
           rel="noopener noreferrer"
           className="aman-btn"
         >
-          فتح StopNCII.org
+          ابدأ قضية StopNCII
         </a>
         <Link href="/guide" className="aman-btn aman-btn-dark">
           العودة للتوجيه
