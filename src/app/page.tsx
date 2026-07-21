@@ -2,10 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { AmanShell } from "@/components/aman-shell";
 import { ArtFrame, LineArtPhoto } from "@/components/art-frame";
-import {
-  IllustProtectHand,
-  IllustSupportBlindfold,
-} from "@/components/illustrations";
+import { IllustProtectHand } from "@/components/illustrations";
 
 export default function HomePage() {
   return (
@@ -148,12 +145,18 @@ export default function HomePage() {
           </Link>
         </div>
         <ArtFrame className="mx-auto w-full max-w-sm">
-          <IllustSupportBlindfold className="h-auto w-full" />
+          <Image
+            src="/illustrations/support-alone.png"
+            alt="رسم لفتاة تشعر بالوحدة — أمان موجود لمساعدتك"
+            width={716}
+            height={1024}
+            className="h-auto w-full bg-white object-contain p-3"
+          />
         </ArtFrame>
       </section>
 
       {/* Privacy support callout */}
-      <section className="mt-16 grid items-center gap-8 rounded-[28px] bg-white p-6 shadow-sm ring-1 ring-black/5 sm:grid-cols-[1fr_200px] sm:p-8">
+      <section className="mt-16 grid items-center gap-8 rounded-[28px] bg-white p-6 shadow-sm ring-1 ring-black/5 sm:grid-cols-[1fr_220px] sm:p-8">
         <div>
           <div className="mb-4 flex justify-center sm:justify-start">
             <IllustProtectHand className="size-20" />
@@ -166,8 +169,14 @@ export default function HomePage() {
             فقط. تذكّر: كل ما تشعر به أمر صحيح ومشروع. أنت ضحية إساءة استخدام.
           </p>
         </div>
-        <ArtFrame>
-          <IllustSupportBlindfold className="h-auto w-full" />
+        <ArtFrame className="mx-auto w-full max-w-[220px]">
+          <Image
+            src="/illustrations/support-reach.png"
+            alt="يد تمتد للمساعدة — لست وحدك"
+            width={980}
+            height={980}
+            className="h-auto w-full bg-white object-contain p-2"
+          />
         </ArtFrame>
       </section>
 
