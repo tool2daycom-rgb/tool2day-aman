@@ -15,8 +15,8 @@ export default function HomePage() {
       <section className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <div className="order-2 lg:order-1">
           <LineArtPhoto
-            src="/illustrations/portrait-peace.png"
-            alt="رسم خطّي هادئ لامرأة بعيون مغلقة — رمز للسكينة والدعم"
+            src="/illustrations/portrait-worried.png"
+            alt="رسم لفتاة تشعر بالقلق — لستِ وحدك ونستطيع مساعدتك خطوة بخطوة"
             priority
             className="mx-auto max-w-md"
           />
