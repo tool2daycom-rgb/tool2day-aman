@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fbf8f3;
-  --foreground: #2b2420;
-  --muted: #6b635c;
+  --background: #f3f7f2;
+  --foreground: #1c2a22;
+  --muted: #5d6f64;
   --card: #ffffff;
-  --accent: #d9923b;
-  --accent-dark: #c47a28;
-  --accent-soft: #f3e2c8;
-  --ink: #5c3d32;
+  --accent: #3d7a5a;
+  --accent-dark: #2f6248;
+  --accent-soft: #dceee3;
+  --ink: #1f3d2e;
   --danger: #b42318;
-  --footer: #2f2f2f;
-  --nav-pill: #e8c9a0;
+  --footer: #1a2a22;
+  --nav-pill: #c5dfd0;
 }
 
 @theme inline {
@@ -32,7 +32,10 @@ body {
 }
 
 .aman-bg {
-  background: var(--background);
+  background:
+    radial-gradient(ellipse 70% 50% at 12% 0%, rgba(61, 122, 90, 0.10), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 90% 8%, rgba(197, 223, 208, 0.55), transparent 50%),
+    var(--background);
 }
 
 .aman-btn {
@@ -54,11 +57,11 @@ body {
 }
 
 .aman-btn-dark {
-  background: #3a3a3a;
+  background: var(--ink);
 }
 
 .aman-btn-dark:hover {
-  background: #222;
+  background: #15281e;
 }
 
 .aman-link {
@@ -74,7 +77,7 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: #3a3a3a;
+  background: var(--accent);
   color: #fff;
   font-size: 0.75rem;
 }
