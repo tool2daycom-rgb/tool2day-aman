@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  other: {
+    referrer: "no-referrer",
+  },
 };
 
 export default function RootLayout({
@@ -38,6 +41,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl" className={`${cairo.variable} h-full antialiased`}>
+      <head>
+        <meta name="referrer" content="no-referrer" />
+      </head>
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   );
