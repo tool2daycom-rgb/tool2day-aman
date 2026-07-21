@@ -1,84 +1,210 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AmanShell } from "@/components/aman-shell";
-import { ArtFrame, LineArtPhoto } from "@/components/art-frame";
-import { IllustWomanPeace } from "@/components/illustrations";
 
 export const metadata: Metadata = {
   title: "المصادر والدعم",
   description:
-    "أدوات عالمية، أرقام طوارئ عربية، ومسارات دعم لضحايا الابتزاز والانتهاك الرقمي.",
+    "مصادر دعم Take It Down وNCMEC، وأدوات أمان للتوجيه العربي الآمن.",
 };
+
+const EXTERNAL = {
+  takeItDownResources:
+    "https://takeitdown.ncmec.org/ar/%d8%a7%d9%84%d9%85%d8%b5%d8%a7%d8%af%d8%b1-%d9%88%d8%a7%d9%84%d8%af%d8%b9%d9%85/",
+  explicitContent:
+    "https://www.missingkids.org/gethelpnow/isyourexplicitcontentoutthere",
+  cyberTip: "https://www.missingkids.org/gethelpnow/cybertipline",
+  mentalHealth: "https://www.missingkids.org/gethelpnow/support",
+  takeItDown: "https://takeitdown.ncmec.org/ar/",
+} as const;
 
 export default function ResourcesPage() {
   return (
     <AmanShell activeHref="/resources" narrow>
-      <div className="grid items-center gap-6 rounded-[28px] bg-[var(--accent-soft)] px-6 py-8 sm:grid-cols-[1fr_160px] sm:px-8">
-        <div>
-          <p className="text-lg font-extrabold leading-8 text-[var(--ink)] sm:text-xl">
-            والأهم من ذلك عليك أن تتذكر أنك لست وحدك! لمزيد من المعلومات عن هذه
-            الخدمة والمصادر الأخرى، ابدأ من هنا.
+      {/* Banner like Take It Down title area */}
+      <div className="rounded-[28px] bg-[#f0f0f0] px-6 py-10 text-center sm:px-10">
+        <h1 className="text-3xl font-extrabold text-[var(--ink)] sm:text-4xl">
+          المصادر والدعم
+        </h1>
+      </div>
+
+      <p className="mt-10 text-base leading-8 text-[var(--foreground)]">
+        نوع المساعدة يختلف من شخص لآخر. هناك العديد من الطرق التي تحصل بها على
+        الدعم من المركز الوطني للأطفال المفقودين والمستغَلين.
+      </p>
+
+      {/* Section 1 — platform reporting */}
+      <section className="mt-12">
+        <p className="text-base leading-8 text-[var(--foreground)]">
+          إذا أردت مزيداً من المساعدة لإزالة المحتوى على الإنترنت من موقع معين
+          بما في ذلك المعلومات بشأن الإبلاغ مباشرة على المنصات المختلفة عبر
+          الإنترنت:
+        </p>
+        <p className="mt-5 text-base leading-8 text-[var(--foreground)]">
+          قم بزيارة{" "}
+          <a
+            href={EXTERNAL.explicitContent}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-[var(--accent-dark)] underline"
+          >
+            MissingKids.org/IsYourExplicitContentOutThere
+          </a>
+          : لمعلومات عن مصادر دعم أخرى يمكن للمركز القومي للأطفال المفقودين أو
+          المستغلين توفيرها والحصول على تعليمات خطوة بخطوة بشأن طريقة التواصل مع
+          منصة عبر الإنترنت مباشرة لإلغاء صورك غير اللائقة أو مقاطع الفيديو
+          الجنسية الفاضحة. في بعض الأحيان يمكن أن يكون هذا هو المسار الأسرع
+          لإزالة صورك أو فيديوهاتك ويمكن تنبيه المنصة لتقديم بلاغ إلى المركز
+          القومي للأطفال المفقودين أو المستغلين مع معلومات إضافية قيمة.
+        </p>
+        <a
+          href={EXTERNAL.explicitContent}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="aman-btn aman-btn-dark mt-6 w-full sm:w-auto"
+        >
+          هل المحتوى الفاضح الخاص بك متاح بالفعل؟
+        </a>
+      </section>
+
+      {/* Section 2 — CyberTipline */}
+      <section className="mt-14 rounded-[24px] bg-white p-6 shadow-sm ring-1 ring-black/5 sm:p-8">
+        <p className="text-base font-extrabold leading-8 text-[var(--ink)]">
+          إذا أردت الإبلاغ عن أي شخص يقوم بتهديدك بهذه الصور أو أي أشكال أخرى من
+          الاستغلال:
+        </p>
+        <p className="mt-4 text-base leading-8 text-[var(--foreground)]">
+          يقوم المركز القومي للأطفال المفقودين أو المستغلين بتشغيل نظام
+          CyberTipline – وهو نظام إبلاغ عبر الإنترنت لجميع أنواع الاستغلال
+          الجنسي. يمكنك تقديم بلاغ عبر CyberTipline، حتى لو كنت قد أرسلت بالفعل
+          الرمز الرقمي المميز لصورتك أو الفيديو الخاص بك لـ Take It Down. تتاح
+          بلاغات CyberTipline لسلطات إنفاذ القوانين من أجل إجراء التحريات
+          الممكنة.
+        </p>
+        <div className="mt-6 rounded-2xl bg-[#f7f7f7] p-5 text-center">
+          <p className="text-sm font-bold text-[var(--muted)]">
+            National Center for Missing &amp; Exploited Children
           </p>
-          <Link href="/guide" className="aman-btn aman-btn-dark mt-6">
-            ابدأ التوجيه
-          </Link>
+          <p className="mt-2 text-xl font-extrabold text-[var(--ink)]">
+            CyberTipline
+          </p>
+          <p className="mt-1 text-sm text-[var(--muted)]" dir="ltr">
+            CyberTipline.org · 1-800-THE-LOST
+          </p>
         </div>
-        <ArtFrame className="mx-auto w-full max-w-[160px]">
-          <IllustWomanPeace className="h-auto w-full" />
-        </ArtFrame>
-      </div>
+        <a
+          href={EXTERNAL.cyberTip}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="aman-btn aman-btn-dark mt-6 w-full text-center sm:w-auto"
+        >
+          زر CyberTipline التابع للمركز القومي للأطفال المفقودين أو المستغلين
+        </a>
+      </section>
 
-      <div className="mx-auto mt-10 max-w-xs">
-        <LineArtPhoto
-          src="/illustrations/portrait-peace.png"
-          alt="رسم خطّي داعم"
-        />
-      </div>
+      {/* Section 3 — US mental health */}
+      <section className="mt-14 rounded-[24px] bg-white p-6 shadow-sm ring-1 ring-black/5 sm:p-8">
+        <p className="text-base font-extrabold leading-8 text-[var(--ink)]">
+          إذا كنت في الولايات المتحدة وترغب في مزيد من المعلومات بشأن الدعم
+          النفسي:
+        </p>
+        <p className="mt-4 text-base leading-8 text-[var(--foreground)]">
+          يمكنك النقر أدناه لمعرفة المزيد عن خدمات الصحة النفسية التابعة للمركز
+          القومي للأطفال المفقودين أو المستغلين وهناك أكثر من طريقة لطلب
+          المساعدة: اتصل على الرقم{" "}
+          <span dir="ltr" className="font-bold">
+            1-800-THE-LOST (1-800-843-5678)
+          </span>{" "}
+          أو أرسل رسالة نصية إلى نفس الرقم، وأرسل بريداً إلكترونياً إلى{" "}
+          <a
+            href="mailto:TakeItDown@ncmec.org"
+            className="font-bold text-[var(--accent-dark)] underline"
+            dir="ltr"
+          >
+            TakeItDown@ncmec.org
+          </a>{" "}
+          وسوف يتواصل شخص معك.
+        </p>
+        <a
+          href={EXTERNAL.mentalHealth}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="aman-btn mt-6 w-full text-center sm:w-auto"
+        >
+          معلومات عن الدعم النفسي
+        </a>
+      </section>
 
-      <h1 className="mt-14 text-center text-3xl font-extrabold text-[var(--muted)] sm:text-4xl">
-        المصادر والدعم
-      </h1>
+      <p className="mt-8 text-xs leading-6 text-[var(--muted)]">
+        المحتوى أعلاه من مصادر{" "}
+        <a
+          href={EXTERNAL.takeItDownResources}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline"
+        >
+          Take It Down — المصادر والدعم
+        </a>{" "}
+        التابعة للمركز القومي للأطفال المفقودين والمستغَلين (NCMEC). أمان يعرضه
+        للتسهيل ولا يستبدل الموقع الرسمي.
+      </p>
 
-      <div className="mt-10 grid gap-6">
+      {/* Aman complementary */}
+      <h2 className="mt-16 text-2xl font-extrabold text-[var(--ink)]">
+        مصادر أمان الإضافية
+      </h2>
+      <div className="mt-6 grid gap-4">
         {[
           {
-            title: "StopNCII — للبالغين (18+)",
-            body: "إذا أردت منع إعادة نشر صور أو فيديوهات حميمة غير رضائية وأنت بالغ، استخدم StopNCII. الشرح العربي متوفر داخل أمان.",
-            href: "/stopncii",
-            cta: "تصفح المصدر",
+            title: "Take It Down — شرح عربي داخل أمان",
+            body: "خطوات استخدام الأداة للقاصرين.",
+            href: "/take-it-down",
+            cta: "افتح الشرح",
           },
           {
-            title: "Take It Down — للقاصرين",
-            body: "إذا كان العمر أقل من 18 سنة، أو تساعد قاصراً، فالأداة المناسبة هي Take It Down التابعة لـ NCMEC.",
-            href: "/take-it-down",
-            cta: "تصفح المصدر",
+            title: "StopNCII — للبالغين (18+)",
+            body: "إذا كان العمر 18 أو أكثر.",
+            href: "/stopncii",
+            cta: "افتح الشرح",
           },
           {
             title: "أرقام الطوارئ حسب البلد",
-            body: "إذا كنت في خطر فوري أو تحتاج جهات محلية، ابدأ التوجيه واختر بلدك لعرض الأرقام المناسبة.",
+            body: "اختر بلدك داخل التوجيه الآمن.",
             href: "/guide",
-            cta: "اختر بلدك",
+            cta: "ابدأ التوجيه",
           },
           {
-            title: "التصفح الآمن",
-            body: "إذا كان هناك احتمال أن الجهاز مراقب، راجع نصائح وضع التصفح الخاص والخروج السريع.",
-            href: "/safe-browsing",
-            cta: "اعرف المزيد",
+            title: "الموقع الرسمي لـ Take It Down",
+            body: "افتح صفحة المصادر الأصلية مباشرة.",
+            href: EXTERNAL.takeItDownResources,
+            cta: "فتح الموقع",
+            external: true,
           },
         ].map((item) => (
           <article
             key={item.title}
-            className="rounded-[24px] bg-white p-6 shadow-sm ring-1 ring-black/5"
+            className="rounded-[22px] bg-white p-5 shadow-sm ring-1 ring-black/5"
           >
-            <h2 className="text-xl font-extrabold text-[var(--ink)]">
+            <h3 className="text-lg font-extrabold text-[var(--ink)]">
               {item.title}
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-[var(--muted)]">
               {item.body}
             </p>
-            <Link href={item.href} className="aman-link mt-4 inline-flex text-sm">
-              {item.cta} ←
-            </Link>
+            {"external" in item && item.external ? (
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="aman-link mt-3 inline-flex text-sm"
+              >
+                {item.cta} ←
+              </a>
+            ) : (
+              <Link href={item.href} className="aman-link mt-3 inline-flex text-sm">
+                {item.cta} ←
+              </Link>
+            )}
           </article>
         ))}
       </div>
