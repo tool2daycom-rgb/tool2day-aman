@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { countries, getCountry, type CountryId } from "@/lib/countries";
+import { getCountry, searchCountries, type CountryId } from "@/lib/countries";
 import {
   clearAnswers,
   initialAnswers,
@@ -32,6 +32,7 @@ export function GuideWizard() {
   const [ready, setReady] = useState(false);
   const [step, setStep] = useState<Step>("safe");
   const [answers, setAnswers] = useState<WizardAnswers>(initialAnswers);
+  const [countryQuery, setCountryQuery] = useState("");
 
   useEffect(() => {
     const loaded = loadAnswers();
@@ -55,6 +56,7 @@ export function GuideWizard() {
   function restart() {
     clearAnswers();
     setAnswers(initialAnswers);
+    setCountryQuery("");
     setStep("safe");
   }
 
@@ -120,25 +122,45 @@ export function GuideWizard() {
       {step === "country" && (
         <Question
           title="في أي بلد أنت؟"
-          body="نختار الأرقام والجهات المناسبة لبلدك فقط. لا نجمع موقعك الجغرافي."
+          body="كل الدول العربية متاحة مع أرقام الطوارئ. لا نجمع موقعك الجغرافي."
         >
-          <div className="grid gap-3 sm:grid-cols-2">
-            {countries.map((c) => (
-              <button
-                key={c.id}
-                type="button"
-                className={choiceBtn}
-                onClick={() =>
-                  update({ countryId: c.id }, "situation")
-                }
-              >
-                <span className="me-2" aria-hidden>
-                  {c.flag}
-                </span>
-                {c.name}
-              </button>
-            ))}
+          <input
+            type="search"
+            value={countryQuery}
+            onChange={(e) => setCountryQuery(e.target.value)}
+            placeholder="ابحث عن بلدك…"
+            className="w-full rounded-2xl border-0 bg-white px-4 py-3.5 text-sm outline-none ring-1 ring-black/10 placeholder:text-[var(--muted)] focus:ring-[var(--accent)]/40"
+            autoComplete="off"
+          />
+          <div className="max-h-[52vh] overflow-y-auto overscroll-contain pe-1">
+            <div className="grid gap-2.5 sm:grid-cols-2">
+              {searchCountries(countryQuery).map((c) => (
+                <button
+                  key={c.id}
+                  type="button"
+                  className={choiceBtn}
+                  onClick={() => {
+                    setCountryQuery("");
+                    update({ countryId: c.id }, "situation");
+                  }}
+                >
+                  <span className="me-2" aria-hidden>
+                    {c.flag}
+                  </span>
+                  {c.name}
+                </button>
+              ))}
+            </div>
+            {searchCountries(countryQuery).length === 0 ? (
+              <p className="py-6 text-center text-sm text-[var(--muted)]">
+                لا توجد نتيجة — جرّب اسماً آخر
+              </p>
+            ) : null}
           </div>
+          <p className="text-xs leading-6 text-[var(--muted)]">
+            الأرقام من مصادر عامة وقد تتغيّر. في الخطر الفوري اتصل بالطوارئ المحلية
+            مباشرة.
+          </p>
           <button type="button" className={secondaryBtn} onClick={() => setStep("browsing")}>
             رجوع
           </button>

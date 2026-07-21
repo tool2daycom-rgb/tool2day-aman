@@ -77,7 +77,7 @@ export default function HomePage() {
             عنف جسدي/جنسي → طوارئ وطب شرعي
           </li>
           <li className="rounded-2xl bg-white/10 px-4 py-3">
-            السعودية · مصر · الإمارات · الأردن
+            كل الدول العربية · أرقام طوارئ حقيقية
           </li>
         </ul>
         <Link
