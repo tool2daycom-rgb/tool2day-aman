@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { AmanShell } from "@/components/aman-shell";
 import { ArtFrame } from "@/components/art-frame";
-import {
-  IllustProtectHand,
-  IllustSupportBlindfold,
-  IllustWomanPeace,
-} from "@/components/illustrations";
+import { IllustProtectHand } from "@/components/illustrations";
 
 export const metadata: Metadata = {
   title: "StopNCII بالعربي — للبالغين",
@@ -29,10 +26,22 @@ export default function StopNciiPage() {
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         <ArtFrame>
-          <IllustWomanPeace className="h-auto w-full" />
+          <Image
+            src="/illustrations/stopncii-help.png"
+            alt="يد تمتد للمساعدة — لست وحدك"
+            width={554}
+            height={532}
+            className="h-auto w-full bg-white object-contain p-3"
+          />
         </ArtFrame>
         <ArtFrame>
-          <IllustSupportBlindfold className="h-auto w-full" />
+          <Image
+            src="/illustrations/stopncii-protect.png"
+            alt="حماية ودعم لمن يمر بمحنة"
+            width={980}
+            height={843}
+            className="h-auto w-full bg-white object-contain p-3"
+          />
         </ArtFrame>
       </div>
       <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
