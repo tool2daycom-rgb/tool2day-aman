@@ -72,6 +72,7 @@ export function PathResult({ answers, onRestart }: Props) {
           </li>
         </ol>
         {country ? <Helplines countryId={country.id} /> : null}
+        <AlsoDigitalTools countryId={answers.countryId} />
       </ResultCard>
     );
   }
@@ -107,6 +108,7 @@ export function PathResult({ answers, onRestart }: Props) {
             </p>
           </>
         ) : null}
+        <AlsoDigitalTools countryId={answers.countryId} />
       </ResultCard>
     );
   }
@@ -207,6 +209,52 @@ function CalmIntro({ forSomeoneElse }: { forSomeoneElse: boolean }) {
         ? "أنت تساعد شخصاً آخر — ابقَ هادئاً، ولا تطلب منه مشاركة الصور معك. وجّهه للأدوات والجهات المناسبة."
         : "خذ نفساً. لست مضطراً لحل كل شيء دفعة واحدة. اتبع الخطوات بالترتيب الذي تستطيعه الآن."}
     </p>
+  );
+}
+
+/** Secondary offer when the main path was not image blackmail — many survivors face both. */
+function AlsoDigitalTools({ countryId }: { countryId: string | null }) {
+  const q = countryId ? `?country=${countryId}` : "";
+  return (
+    <div className="mt-8 rounded-[22px] bg-[var(--accent-soft)] p-5">
+      <p className="font-extrabold text-[var(--ink)]">
+        هل هناك أيضاً صور أو فيديو حساس؟
+      </p>
+      <p className="mt-2 text-sm leading-7 text-[var(--muted)]">
+        إذا كان المحتوى منشور أو مهدداً بالنشر، استخدم الأداة المناسبة حسب العمر —
+        بدون رفع الصورة الأصلية.
+      </p>
+      <div className="mt-4 grid gap-3">
+        <a
+          href="https://stopncii.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block rounded-2xl bg-[var(--accent)] px-4 py-3 text-sm font-extrabold text-white transition hover:brightness-110"
+        >
+          StopNCII.org — للبالغين (18+)
+        </a>
+        <Link
+          href={`/stopncii${q}`}
+          className="block rounded-2xl bg-white px-4 py-3 text-sm font-bold text-[var(--ink)] ring-1 ring-black/5"
+        >
+          شرح StopNCII بالعربي
+        </Link>
+        <a
+          href="https://takeitdown.ncmec.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block rounded-2xl bg-[var(--ink)] px-4 py-3 text-sm font-extrabold text-white transition hover:brightness-110"
+        >
+          Take It Down — للقاصرين (أقل من 18)
+        </a>
+        <Link
+          href={`/take-it-down${q}`}
+          className="block rounded-2xl bg-white px-4 py-3 text-sm font-bold text-[var(--ink)] ring-1 ring-black/5"
+        >
+          شرح Take It Down بالعربي
+        </Link>
+      </div>
+    </div>
   );
 }
 
