@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { AmanShell } from "@/components/aman-shell";
+import { AgeEntryBoxes } from "@/components/age-entry-boxes";
 import { GuideHelplines } from "@/components/guide-helplines";
-import { TAKE_IT_DOWN_CREATE_CASE } from "@/lib/official-tools";
 
 export const metadata: Metadata = {
   title: "Take It Down بالعربي — للقاصرين",
@@ -18,18 +17,11 @@ export default async function TakeItDownPage({ searchParams }: Props) {
   return (
     <AmanShell narrow activeHref="/resources">
       <div className="mb-6 rounded-[22px] bg-[var(--accent-soft)] p-4 text-sm leading-7 text-[var(--ink)]">
-        وصلتَ إلى المسار المناسب للقاصرين (أقل من 18). اضغط الزر لفتح Take It
-        Down الرسمي فوراً، أو اقرأ الشرح العربي أولاً.
+        وصلتَ إلى المسار المناسب للقاصرين (أقل من 18). اختر المربع المناسب لفتح
+        الأداة الرسمية فوراً، أو اقرأ الشرح العربي أولاً.
       </div>
 
-      <a
-        href={TAKE_IT_DOWN_CREATE_CASE}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="aman-btn w-full text-center sm:w-auto"
-      >
-        ابدأ قضية Take It Down الآن
-      </a>
+      <AgeEntryBoxes highlight="minor" />
 
       <p className="mt-8 text-xs font-bold text-[var(--accent-dark)]">
         للقاصرين · أقل من 18
@@ -46,8 +38,7 @@ export default async function TakeItDownPage({ searchParams }: Props) {
       <div className="mt-6 rounded-2xl bg-[var(--accent-soft)] p-5">
         <p className="font-extrabold text-[var(--ink)]">الفرق المهم</p>
         <p className="mt-2 text-sm leading-7 text-[var(--muted)]">
-          StopNCII للبالغين. Take It Down للقاصرين. اختيار الأداة الصحيحة يزيد
-          فرص الحماية.
+          +18 يستخدم StopNCII. القاصر أقل من 18 يستخدم Take It Down.
         </p>
       </div>
 
@@ -68,19 +59,7 @@ export default async function TakeItDownPage({ searchParams }: Props) {
 
       <GuideHelplines countryFromQuery={country} />
 
-      <div className="mt-8 flex flex-wrap gap-3">
-        <a
-          href={TAKE_IT_DOWN_CREATE_CASE}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="aman-btn"
-        >
-          ابدأ قضية Take It Down
-        </a>
-        <Link href="/stopncii" className="aman-btn aman-btn-dark">
-          أنا بالغ — StopNCII
-        </Link>
-      </div>
+      <AgeEntryBoxes highlight="minor" />
     </AmanShell>
   );
 }

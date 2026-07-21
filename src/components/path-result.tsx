@@ -11,9 +11,10 @@ import type { WizardAnswers } from "@/lib/wizard";
 type Props = {
   answers: WizardAnswers;
   onRestart: () => void;
+  onBack: () => void;
 };
 
-export function PathResult({ answers, onRestart }: Props) {
+export function PathResult({ answers, onRestart, onBack }: Props) {
   const country = getCountry(answers.countryId as CountryId | null);
 
   if (answers.safeNow === false) {
@@ -22,6 +23,7 @@ export function PathResult({ answers, onRestart }: Props) {
         tone="urgent"
         title="أولويتك الآن: السلامة"
         onRestart={onRestart}
+        onBack={onBack}
       >
         <p>
           إذا كنت في خطر فوري، اتصل بالطوارئ أو اطلب مساعدة من شخص تثق به في
@@ -54,7 +56,7 @@ export function PathResult({ answers, onRestart }: Props) {
 
   if (answers.situation === "physical") {
     return (
-      <ResultCard title="مسار العنف الجسدي أو الجنسي" onRestart={onRestart}>
+      <ResultCard title="مسار العنف الجسدي أو الجنسي" onRestart={onRestart} onBack={onBack}>
         <CalmIntro forSomeoneElse={answers.forSomeoneElse} />
         <ol className="mt-5 space-y-4 text-sm leading-7 text-[var(--muted)]">
           <li>
@@ -76,14 +78,14 @@ export function PathResult({ answers, onRestart }: Props) {
           </li>
         </ol>
         {country ? <Helplines countryId={country.id} /> : null}
-        <AlsoDigitalTools countryId={answers.countryId} />
+        <AlsoDigitalTools />
       </ResultCard>
     );
   }
 
   if (answers.situation === "threat_no_images") {
     return (
-      <ResultCard title="مسار التهديد بدون صور" onRestart={onRestart}>
+      <ResultCard title="مسار التهديد بدون صور" onRestart={onRestart} onBack={onBack}>
         <CalmIntro forSomeoneElse={answers.forSomeoneElse} />
         <ol className="mt-5 space-y-4 text-sm leading-7 text-[var(--muted)]">
           <li>
@@ -112,7 +114,7 @@ export function PathResult({ answers, onRestart }: Props) {
             </p>
           </>
         ) : null}
-        <AlsoDigitalTools countryId={answers.countryId} />
+        <AlsoDigitalTools />
       </ResultCard>
     );
   }
@@ -130,6 +132,7 @@ export function PathResult({ answers, onRestart }: Props) {
           : "مسار الابتزاز بصور أو فيديو"
       }
       onRestart={onRestart}
+      onBack={onBack}
     >
       <CalmIntro forSomeoneElse={answers.forSomeoneElse} />
 
@@ -142,49 +145,31 @@ export function PathResult({ answers, onRestart }: Props) {
         </p>
       </div>
 
-      <div className="mt-5 grid gap-3">
-        {isAdult ? (
-          <a
-            href={STOPNCII_CREATE_CASE}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block rounded-[22px] bg-[var(--accent)] px-5 py-4 text-white shadow-sm transition hover:brightness-110"
-          >
-            <span className="font-extrabold">ابدأ قضية StopNCII الآن — للبالغين</span>
-            <span className="mt-1 block text-sm font-normal text-white/85">
-              الأداة الرسمية · ثم ارجع لشرح أمان إن احتجت
-            </span>
-          </a>
-        ) : null}
-        {isAdult ? (
-          <Link
-            href={`/stopncii${answers.countryId ? `?country=${answers.countryId}` : ""}`}
-            className="block rounded-[22px] bg-white px-5 py-4 shadow-sm outline outline-black/6 transition hover:-translate-y-0.5"
-          >
-            <span className="font-extrabold">شرح StopNCII بالعربي داخل أمان</span>
-          </Link>
-        ) : null}
-        {isMinor ? (
-          <a
-            href={TAKE_IT_DOWN_CREATE_CASE}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block rounded-[22px] bg-[var(--ink)] px-5 py-4 text-white shadow-sm transition hover:brightness-110"
-          >
-            <span className="font-extrabold">ابدأ قضية Take It Down الآن — للقاصرين</span>
-            <span className="mt-1 block text-sm font-normal text-white/85">
-              الأداة الرسمية من NCMEC
-            </span>
-          </a>
-        ) : null}
-        {isMinor ? (
-          <Link
-            href={`/take-it-down${answers.countryId ? `?country=${answers.countryId}` : ""}`}
-            className="block rounded-[22px] bg-white px-5 py-4 shadow-sm outline outline-black/6 transition hover:-translate-y-0.5"
-          >
-            <span className="font-extrabold">شرح Take It Down بالعربي داخل أمان</span>
-          </Link>
-        ) : null}
+      <div className="mt-5 grid gap-3 sm:grid-cols-2">
+        <a
+          href={TAKE_IT_DOWN_CREATE_CASE}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`flex min-h-[4.5rem] items-center justify-center rounded-[22px] px-5 py-5 text-center text-xl font-extrabold ${
+            isMinor
+              ? "bg-[var(--ink)] text-white"
+              : "bg-white text-[var(--ink)] ring-1 ring-black/8"
+          }`}
+        >
+          قاصر أقل من 18
+        </a>
+        <a
+          href={STOPNCII_CREATE_CASE}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`flex min-h-[4.5rem] items-center justify-center rounded-[22px] px-5 py-5 text-center text-xl font-extrabold ${
+            isAdult
+              ? "bg-[var(--accent)] text-white"
+              : "bg-white text-[var(--ink)] ring-1 ring-black/8"
+          }`}
+        >
+          +18
+        </a>
       </div>
 
       <ol className="mt-6 space-y-3 text-sm leading-7 text-[var(--muted)]">
@@ -217,46 +202,31 @@ function CalmIntro({ forSomeoneElse }: { forSomeoneElse: boolean }) {
 }
 
 /** Secondary offer when the main path was not image blackmail — many survivors face both. */
-function AlsoDigitalTools({ countryId }: { countryId: string | null }) {
-  const q = countryId ? `?country=${countryId}` : "";
+function AlsoDigitalTools() {
+  const box =
+    "flex min-h-[4.5rem] items-center justify-center rounded-[22px] px-5 py-5 text-center text-xl font-extrabold transition hover:-translate-y-0.5 active:scale-[0.99]";
   return (
     <div className="mt-8 rounded-[22px] bg-[var(--accent-soft)] p-5">
       <p className="font-extrabold text-[var(--ink)]">
         هل هناك أيضاً صور أو فيديو حساس؟
       </p>
-      <p className="mt-2 text-sm leading-7 text-[var(--muted)]">
-        إذا كان المحتوى منشور أو مهدداً بالنشر، استخدم الأداة المناسبة حسب العمر —
-        بدون رفع الصورة الأصلية.
-      </p>
-      <div className="mt-4 grid gap-3">
-        <a
-          href={STOPNCII_CREATE_CASE}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block rounded-2xl bg-[var(--accent)] px-4 py-3 text-sm font-extrabold text-white transition hover:brightness-110"
-        >
-          ابدأ قضية StopNCII — للبالغين (18+)
-        </a>
-        <Link
-          href={`/stopncii${q}`}
-          className="block rounded-2xl bg-white px-4 py-3 text-sm font-bold text-[var(--ink)] ring-1 ring-black/5"
-        >
-          شرح StopNCII بالعربي
-        </Link>
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
         <a
           href={TAKE_IT_DOWN_CREATE_CASE}
           target="_blank"
           rel="noopener noreferrer"
-          className="block rounded-2xl bg-[var(--ink)] px-4 py-3 text-sm font-extrabold text-white transition hover:brightness-110"
+          className={`${box} bg-white text-[var(--ink)] ring-1 ring-black/8`}
         >
-          ابدأ قضية Take It Down — للقاصرين (أقل من 18)
+          قاصر أقل من 18
         </a>
-        <Link
-          href={`/take-it-down${q}`}
-          className="block rounded-2xl bg-white px-4 py-3 text-sm font-bold text-[var(--ink)] ring-1 ring-black/5"
+        <a
+          href={STOPNCII_CREATE_CASE}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${box} bg-[var(--accent)] text-white`}
         >
-          شرح Take It Down بالعربي
-        </Link>
+          +18
+        </a>
       </div>
     </div>
   );
@@ -328,11 +298,13 @@ function ResultCard({
   title,
   children,
   onRestart,
+  onBack,
   tone = "calm",
 }: {
   title: string;
   children: React.ReactNode;
   onRestart: () => void;
+  onBack: () => void;
   tone?: "calm" | "urgent";
 }) {
   const urgent = tone === "urgent";
@@ -349,6 +321,17 @@ function ResultCard({
       </h1>
       <div className={`mt-4 ${urgent ? "text-white/90" : ""}`}>{children}</div>
       <div className="mt-8 flex flex-wrap gap-3">
+        <button
+          type="button"
+          onClick={onBack}
+          className={`rounded-full px-5 py-2.5 text-sm font-semibold ${
+            urgent
+              ? "bg-white/15 text-white"
+              : "bg-white text-[var(--muted)] ring-1 ring-black/8"
+          }`}
+        >
+          ← الخطوة السابقة
+        </button>
         <button
           type="button"
           onClick={onRestart}

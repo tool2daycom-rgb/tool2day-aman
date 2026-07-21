@@ -98,7 +98,26 @@ export function GuideWizard() {
   }
 
   if (step === "result") {
-    return <PathResult answers={answers} onRestart={restart} />;
+    return (
+      <PathResult
+        answers={answers}
+        onRestart={restart}
+        onBack={() => {
+          if (answers.safeNow === false) {
+            update({ safeNow: null }, "safe");
+            return;
+          }
+          if (
+            answers.situation === "physical" ||
+            answers.situation === "threat_no_images"
+          ) {
+            update({ situation: null, ageGroup: null }, "situation");
+            return;
+          }
+          update({ ageGroup: null }, "age");
+        }}
+      />
+    );
   }
 
   return (
@@ -143,7 +162,7 @@ export function GuideWizard() {
             أريد نصائح للتصفح الآمن أولاً
           </Link>
           <button type="button" className={secondaryBtn} onClick={() => setStep("safe")}>
-            رجوع
+            ← الخطوة السابقة
           </button>
         </Question>
       )}
@@ -191,7 +210,7 @@ export function GuideWizard() {
             مباشرة.
           </p>
           <button type="button" className={secondaryBtn} onClick={() => setStep("browsing")}>
-            رجوع
+            ← الخطوة السابقة
           </button>
         </Question>
       )}
@@ -252,7 +271,7 @@ export function GuideWizard() {
             </button>
           ))}
           <button type="button" className={secondaryBtn} onClick={() => setStep("country")}>
-            رجوع
+            ← الخطوة السابقة
           </button>
         </Question>
       )}
@@ -264,21 +283,17 @@ export function GuideWizard() {
               ? "هل الشخص المعني أقل من 18 سنة؟"
               : "هل عمرك أقل من 18 سنة؟"
           }
-          body="هذا السؤال يحدد الأداة المناسبة فوراً: البالغون → StopNCII · القاصرون → Take It Down."
+          body="هذا السؤال يحدد الأداة المناسبة فوراً."
         >
           {(
             [
               {
-                id: "adult" as AgeGroup,
-                label: "18 سنة أو أكثر → StopNCII",
-              },
-              {
                 id: "minor" as AgeGroup,
-                label: "أقل من 18 سنة → Take It Down",
+                label: "قاصر أقل من 18",
               },
               {
-                id: "unsure" as AgeGroup,
-                label: "غير متأكد / أفضل المسارين",
+                id: "adult" as AgeGroup,
+                label: "+18",
               },
             ] as const
           ).map((item) => (
@@ -292,7 +307,7 @@ export function GuideWizard() {
             </button>
           ))}
           <button type="button" className={secondaryBtn} onClick={() => setStep("situation")}>
-            رجوع
+            ← الخطوة السابقة
           </button>
         </Question>
       )}

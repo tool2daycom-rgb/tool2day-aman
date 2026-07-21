@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { AmanShell } from "@/components/aman-shell";
+import { AgeEntryBoxes } from "@/components/age-entry-boxes";
 import { ArtFrame } from "@/components/art-frame";
 import { GuideHelplines } from "@/components/guide-helplines";
 import { IllustProtectHand } from "@/components/illustrations";
-import { STOPNCII_CREATE_CASE } from "@/lib/official-tools";
 
 export const metadata: Metadata = {
   title: "StopNCII بالعربي — للبالغين",
@@ -23,18 +22,11 @@ export default async function StopNciiPage({ searchParams }: Props) {
   return (
     <AmanShell narrow activeHref="/resources">
       <div className="mb-6 rounded-[22px] bg-[var(--accent-soft)] p-4 text-sm leading-7 text-[var(--ink)]">
-        وصلتَ إلى المسار المناسب للبالغين (18+). اضغط الزر الأخضر لفتح الأداة
+        وصلتَ إلى المسار المناسب للبالغين (18+). اختر المربع المناسب لفتح الأداة
         الرسمية فوراً، أو اقرأ الشرح العربي أولاً.
       </div>
 
-      <a
-        href={STOPNCII_CREATE_CASE}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="aman-btn w-full text-center sm:w-auto"
-      >
-        ابدأ قضية StopNCII الآن
-      </a>
+      <AgeEntryBoxes highlight="adult" />
 
       <p className="mt-8 text-xs font-bold text-[var(--accent-dark)]">للبالغين · 18+</p>
       <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-[var(--ink)]">
@@ -111,27 +103,7 @@ export default async function StopNciiPage({ searchParams }: Props) {
 
       <GuideHelplines countryFromQuery={country} />
 
-      <div className="mt-8 flex flex-wrap gap-3">
-        <a
-          href={STOPNCII_CREATE_CASE}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="aman-btn"
-        >
-          ابدأ قضية StopNCII
-        </a>
-        <Link href="/guide" className="aman-btn aman-btn-dark">
-          العودة للتوجيه
-        </Link>
-      </div>
-
-      <p className="mt-6 text-xs leading-6 text-[var(--muted)]">
-        إذا كان الشخص المعني أقل من 18 سنة، استخدم{" "}
-        <Link href="/take-it-down" className="underline">
-          Take It Down
-        </Link>
-        .
-      </p>
+      <AgeEntryBoxes highlight="adult" />
     </AmanShell>
   );
 }
