@@ -46,7 +46,7 @@ export default function ResourcesPage() {
             href={EXTERNAL.ncmec}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-xl bg-white px-4 py-3 shadow-sm ring-1 ring-black/5"
+            className="rounded-xl bg-[var(--ink)] px-4 py-3 shadow-sm"
           >
             <Image
               src="/partners/ncmec-logo.png"
@@ -78,7 +78,7 @@ export default function ResourcesPage() {
               href={EXTERNAL.explicitContent}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold text-[var(--accent-dark)] underline"
+              className="break-all font-bold text-[var(--ink)] underline decoration-[var(--accent)] underline-offset-2 hover:text-[var(--accent-dark)]"
             >
               MissingKids.org/IsYourExplicitContentOutThere
             </a>
@@ -181,7 +181,7 @@ export default function ResourcesPage() {
               أو أرسل رسالة نصية إلى نفس الرقم، وأرسل بريداً إلكترونياً إلى{" "}
               <a
                 href="mailto:TakeItDown@ncmec.org"
-                className="font-bold text-[var(--accent-dark)] underline"
+                className="break-all font-bold text-[var(--ink)] underline decoration-[var(--accent)] underline-offset-2 hover:text-[var(--accent-dark)]"
                 dir="ltr"
               >
                 TakeItDown@ncmec.org
@@ -207,7 +207,7 @@ export default function ResourcesPage() {
             />
           </div>
         </div>
-        <div className="mt-6 flex justify-center rounded-2xl bg-[#f7f7f7] p-4">
+        <div className="mt-6 flex justify-center rounded-2xl bg-[var(--ink)] p-5">
           <Image
             src="/partners/ncmec-logo.png"
             alt="NCMEC"
