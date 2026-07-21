@@ -255,6 +255,12 @@ function Helplines({
       >
         أرقام مفيدة — {country.name}
       </h2>
+      {!urgent ? (
+        <p className="mt-1 text-xs leading-6 text-[var(--muted)]">
+          قد تختلف الأرقام حسب المنطقة أو الشبكة. في الخطر الفوري اتصل بالطوارئ
+          المحلية مباشرة.
+        </p>
+      ) : null}
       <ul className="mt-3 grid gap-2">
         {lines.map((line) => (
           <li key={`${line.label}-${line.value}`}>

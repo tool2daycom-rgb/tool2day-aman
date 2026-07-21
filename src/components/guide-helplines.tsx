@@ -27,7 +27,13 @@ export function GuideHelplines({ countryFromQuery }: { countryFromQuery?: string
       <h2 className="text-sm font-extrabold text-[var(--ink)]">
         أرقام مفيدة — {country.name}
       </h2>
-      <p className="mt-1 text-xs text-[var(--muted)]">{country.cyberNote}</p>
+      <p className="mt-1 text-xs leading-6 text-[var(--muted)]">
+        {country.cyberNote}
+      </p>
+      <p className="mt-2 text-xs leading-6 text-[var(--muted)]">
+        الأرقام من مصادر عامة رسمية قدر الإمكان، وقد تتغيّر. في الخطر الفوري اتصل
+        بالطوارئ المحلية مباشرة.
+      </p>
       <ul className="mt-3 grid gap-2">
         {lines.map((line) => (
           <li key={`${line.label}-${line.value}`}>
