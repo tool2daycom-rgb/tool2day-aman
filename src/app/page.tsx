@@ -1,11 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { AmanShell } from "@/components/aman-shell";
 import { ArtFrame, LineArtPhoto } from "@/components/art-frame";
 import {
   IllustProtectHand,
   IllustSupportBlindfold,
-  IllustWomanBack,
-  IllustWomanPeace,
 } from "@/components/illustrations";
 
 export default function HomePage() {
@@ -46,7 +45,13 @@ export default function HomePage() {
           <div className="h-1.5 bg-[var(--accent)]" />
           <div className="grid gap-4 p-5 sm:grid-cols-[140px_1fr] sm:items-center">
             <ArtFrame>
-              <IllustWomanBack className="h-auto w-full" />
+              <Image
+                src="/illustrations/empathy-crying.png"
+                alt="رسم لفتاة تبكي — الدعم موجود"
+                width={280}
+                height={280}
+                className="h-auto w-full bg-white object-contain p-2"
+              />
             </ArtFrame>
             <p className="text-sm leading-7 text-[var(--foreground)]">
               آلاف الضحايا حول العالم مرّوا بما تمرّين به أو تمرّ به. الدعم موجود،
@@ -58,7 +63,13 @@ export default function HomePage() {
           <div className="h-1.5 bg-[var(--accent)]" />
           <div className="grid gap-4 p-5 sm:grid-cols-[140px_1fr] sm:items-center">
             <ArtFrame>
-              <IllustWomanPeace className="h-auto w-full" />
+              <Image
+                src="/illustrations/empathy-hands.png"
+                alt="رسم لامرأة تغطي وجهها — مشاعرك صحيحة"
+                width={280}
+                height={280}
+                className="h-auto w-full bg-white object-contain p-2"
+              />
             </ArtFrame>
             <p className="text-sm leading-7 text-[var(--foreground)]">
               مشاعرك صحيحة ومشروعة. أنت ضحية إساءة استخدام — ولست مسؤولاً عمّا
