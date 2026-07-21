@@ -18,14 +18,19 @@ export default function HomePage() {
           />
         </div>
         <div className="order-1 lg:order-2">
-          <p className="text-2xl font-extrabold tracking-tight text-[var(--ink)] sm:text-3xl">
-            .أمان
+          <p className="text-sm font-bold tracking-[0.2em] text-[var(--accent-dark)]">
+            أمان
           </p>
-          <h1 className="mt-4 text-3xl font-extrabold leading-[1.35] text-[var(--ink)] sm:text-4xl lg:text-[2.6rem]">
-            وجود صور أو تهديدات على الإنترنت محنة مخيفة — لكن الآن أصبحت هناك
-            فرصة واضحة للتصرف بهدوء.
+          <h1 className="mt-5 max-w-xl text-[1.85rem] font-extrabold leading-[1.45] tracking-tight text-[var(--ink)] sm:text-4xl lg:text-[2.55rem] lg:leading-[1.4]">
+            <span className="block">
+              أمانك الرقمي{" "}
+              <span className="text-[var(--accent)]">وحقك محفوظ</span>
+            </span>
+            <span className="mt-3 block text-[1.35rem] font-bold leading-[1.55] text-[var(--foreground)] sm:mt-4 sm:text-2xl lg:text-[1.65rem]">
+              نحن هنا لنقودك خطوة بخطوة وننهي هذا التوتر.
+            </span>
           </h1>
-          <p className="mt-5 max-w-xl text-base leading-8 text-[var(--foreground)]">
+          <p className="mt-6 max-w-xl text-base leading-8 text-[var(--muted)]">
             أمان منصة عربية تفاعلية ترشد ضحايا الابتزاز والانتهاك الرقمي خطوة
             بخطوة إلى الإجراء الصحيح. لا نطلب صوراً، ولا نسجّل بياناتك الشخصية،
             ونحافظ على خصوصيتك في كل مرحلة.
