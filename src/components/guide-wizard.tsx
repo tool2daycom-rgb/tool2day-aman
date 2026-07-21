@@ -23,10 +23,10 @@ type Step =
   | "result";
 
 const choiceBtn =
-  "w-full rounded-[22px] bg-white/90 px-5 py-4 text-start text-base font-bold text-[var(--foreground)] shadow-sm ring-1 ring-black/5 transition hover:bg-white hover:ring-[var(--accent)]/30 active:scale-[0.99]";
+  "w-full rounded-[22px] bg-white px-5 py-4 text-start text-base font-bold text-[var(--foreground)] shadow-sm ring-1 ring-black/5 transition hover:bg-[var(--accent-soft)] hover:ring-[var(--nav-pill)] active:scale-[0.99]";
 
 const secondaryBtn =
-  "rounded-full bg-white/70 px-4 py-2 text-sm font-semibold text-[var(--muted)] ring-1 ring-black/5 transition hover:bg-white hover:text-[var(--foreground)]";
+  "rounded-full bg-white px-4 py-2 text-sm font-semibold text-[var(--muted)] ring-1 ring-black/8 transition hover:text-[var(--foreground)]";
 
 export function GuideWizard() {
   const [ready, setReady] = useState(false);
@@ -299,8 +299,8 @@ function Question({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-[28px] bg-white/80 p-6 shadow-sm ring-1 ring-black/5 backdrop-blur sm:p-8">
-      <h1 className="text-2xl font-extrabold leading-snug tracking-tight sm:text-3xl">
+    <section className="rounded-[28px] bg-white p-6 shadow-sm ring-1 ring-black/5 sm:p-8">
+      <h1 className="text-2xl font-extrabold leading-snug tracking-tight text-[var(--ink)] sm:text-3xl">
         {title}
       </h1>
       <p className="mt-3 text-sm leading-7 text-[var(--muted)] sm:text-base">

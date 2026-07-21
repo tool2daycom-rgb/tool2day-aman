@@ -269,10 +269,10 @@ function ResultCard({
       className={`rounded-[28px] p-6 shadow-sm sm:p-8 ${
         urgent
           ? "bg-[#8a1f16] text-white"
-          : "bg-white/85 ring-1 ring-black/5 backdrop-blur"
+          : "bg-white shadow-sm ring-1 ring-black/5"
       }`}
     >
-      <h1 className="text-2xl font-extrabold tracking-tight sm:text-3xl">
+      <h1 className="text-2xl font-extrabold tracking-tight text-[var(--ink)] sm:text-3xl">
         {title}
       </h1>
       <div className={`mt-4 ${urgent ? "text-white/90" : ""}`}>{children}</div>
@@ -293,7 +293,7 @@ function ResultCard({
           className={`rounded-full px-5 py-2.5 text-sm font-semibold ${
             urgent
               ? "bg-white/15 text-white"
-              : "bg-black/5 text-[var(--muted)]"
+              : "bg-[var(--accent-soft)] text-[var(--ink)]"
           }`}
         >
           الخصوصية
