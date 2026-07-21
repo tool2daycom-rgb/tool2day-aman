@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AmanShell } from "@/components/aman-shell";
+import { ArtFrame, LineArtPhoto } from "@/components/art-frame";
+import { IllustWomanPeace } from "@/components/illustrations";
 
 export const metadata: Metadata = {
   title: "المصادر والدعم",
@@ -11,14 +13,26 @@ export const metadata: Metadata = {
 export default function ResourcesPage() {
   return (
     <AmanShell activeHref="/resources" narrow>
-      <div className="rounded-[28px] bg-[var(--accent-soft)] px-6 py-8 sm:px-8">
-        <p className="text-lg font-extrabold leading-8 text-[var(--ink)] sm:text-xl">
-          والأهم من ذلك عليك أن تتذكر أنك لست وحدك! لمزيد من المعلومات عن هذه
-          الخدمة والمصادر الأخرى، ابدأ من هنا.
-        </p>
-        <Link href="/guide" className="aman-btn aman-btn-dark mt-6">
-          ابدأ التوجيه
-        </Link>
+      <div className="grid items-center gap-6 rounded-[28px] bg-[var(--accent-soft)] px-6 py-8 sm:grid-cols-[1fr_160px] sm:px-8">
+        <div>
+          <p className="text-lg font-extrabold leading-8 text-[var(--ink)] sm:text-xl">
+            والأهم من ذلك عليك أن تتذكر أنك لست وحدك! لمزيد من المعلومات عن هذه
+            الخدمة والمصادر الأخرى، ابدأ من هنا.
+          </p>
+          <Link href="/guide" className="aman-btn aman-btn-dark mt-6">
+            ابدأ التوجيه
+          </Link>
+        </div>
+        <ArtFrame className="mx-auto w-full max-w-[160px]">
+          <IllustWomanPeace className="h-auto w-full" />
+        </ArtFrame>
+      </div>
+
+      <div className="mx-auto mt-10 max-w-xs">
+        <LineArtPhoto
+          src="/illustrations/portrait-peace.png"
+          alt="رسم خطّي داعم"
+        />
       </div>
 
       <h1 className="mt-14 text-center text-3xl font-extrabold text-[var(--muted)] sm:text-4xl">

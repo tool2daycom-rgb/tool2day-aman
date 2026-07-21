@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AmanShell } from "@/components/aman-shell";
+import { ArtFrame } from "@/components/art-frame";
+import {
+  IllustProtectHand,
+  IllustSupportBlindfold,
+  IllustWomanPeace,
+} from "@/components/illustrations";
 
 export const metadata: Metadata = {
   title: "StopNCII بالعربي — للبالغين",
@@ -21,12 +27,36 @@ export default function StopNciiPage() {
         جهازك بصمة رقمية مشفّرة (Hash) فقط.
       </p>
 
-      <div className="mt-6 rounded-2xl bg-[var(--accent-soft)] p-5">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <ArtFrame>
+          <IllustWomanPeace className="h-auto w-full" />
+        </ArtFrame>
+        <ArtFrame>
+          <IllustSupportBlindfold className="h-auto w-full" />
+        </ArtFrame>
+      </div>
+      <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
+        تذكّر: كل ما تشعر به أمر صحيح ومشروع. أنت ضحية إساءة استخدام — ولست
+        وحدك في هذه الرحلة.
+      </p>
+
+      <div className="mt-8 rounded-2xl bg-[var(--accent-soft)] p-5">
         <p className="font-extrabold text-[var(--ink)]">لماذا لا نحذف الصور نحن؟</p>
         <p className="mt-2 text-sm leading-7 text-[var(--muted)]">
           لا يمكن قانونياً وتقنياً لأي موقع خارجي مسح محتوى من سيرفرات فيسبوك أو
           تيك توك مباشرة. StopNCII يشارك البصمات مع المنصات المشاركة لحظر
           المطابق أو إزالته.
+        </p>
+      </div>
+
+      <div className="mt-10 flex flex-col items-center gap-4 rounded-[24px] bg-white p-6 text-center ring-1 ring-black/5">
+        <IllustProtectHand className="size-16" />
+        <h2 className="text-xl font-extrabold text-[var(--ink)]">
+          نحن نحمي خصوصيتك
+        </h2>
+        <p className="text-sm leading-7 text-[var(--muted)]">
+          التجزئة (Hashing) تتم على جهازك. الصورة الأصلية لا تُرفع إلى خوادم
+          الأداة عبر هذه العملية.
         </p>
       </div>
 

@@ -1,20 +1,25 @@
 import Link from "next/link";
 import { AmanShell } from "@/components/aman-shell";
+import { ArtFrame, LineArtPhoto } from "@/components/art-frame";
 import {
-  IllustBirds,
-  IllustDesk,
-  IllustPhone,
-  IllustShield,
-  IllustTalk,
+  IllustProtectHand,
+  IllustSupportBlindfold,
+  IllustWomanBack,
+  IllustWomanPeace,
 } from "@/components/illustrations";
 
 export default function HomePage() {
   return (
     <AmanShell activeHref="/">
-      {/* Hero — Take It Down style */}
+      {/* Hero */}
       <section className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <div className="order-2 lg:order-1">
-          <IllustShield className="mx-auto h-auto w-full max-w-md" />
+          <LineArtPhoto
+            src="/illustrations/portrait-peace.png"
+            alt="رسم خطّي هادئ لامرأة بعيون مغلقة — رمز للسكينة والدعم"
+            priority
+            className="mx-auto max-w-md"
+          />
         </div>
         <div className="order-1 lg:order-2">
           <p className="text-2xl font-extrabold tracking-tight text-[var(--ink)] sm:text-3xl">
@@ -35,24 +40,52 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Empathy strip — StopNCII style */}
+      <section className="mt-16 grid gap-5 md:grid-cols-2">
+        <article className="overflow-hidden rounded-[24px] bg-[#f3f5f4] ring-1 ring-black/5">
+          <div className="h-1.5 bg-[var(--accent)]" />
+          <div className="grid gap-4 p-5 sm:grid-cols-[140px_1fr] sm:items-center">
+            <ArtFrame>
+              <IllustWomanBack className="h-auto w-full" />
+            </ArtFrame>
+            <p className="text-sm leading-7 text-[var(--foreground)]">
+              آلاف الضحايا حول العالم مرّوا بما تمرّين به أو تمرّ به. الدعم موجود،
+              والخطوة الأولى لا تتطلب مشاركة صور مع أحد.
+            </p>
+          </div>
+        </article>
+        <article className="overflow-hidden rounded-[24px] bg-[#f3f5f4] ring-1 ring-black/5">
+          <div className="h-1.5 bg-[var(--accent)]" />
+          <div className="grid gap-4 p-5 sm:grid-cols-[140px_1fr] sm:items-center">
+            <ArtFrame>
+              <IllustWomanPeace className="h-auto w-full" />
+            </ArtFrame>
+            <p className="text-sm leading-7 text-[var(--foreground)]">
+              مشاعرك صحيحة ومشروعة. أنت ضحية إساءة استخدام — ولست مسؤولاً عمّا
+              فعله المعتدي.
+            </p>
+          </div>
+        </article>
+      </section>
+
       {/* Three question cards */}
       <section className="mt-20 grid gap-6 md:grid-cols-3">
         {[
           {
             href: "#what",
             title: "ما هي خدمة أمان؟",
-            Illust: IllustTalk,
+            body: "توجيه عربي هادئ بدون رفع صور",
           },
           {
             href: "#who",
             title: "لمن تقدم خدمة أمان؟",
-            Illust: IllustBirds,
+            body: "بالغون · قاصرون · مساعدة شخص آخر",
             highlight: true,
           },
           {
             href: "#how",
             title: "كيف تعمل خدمة أمان؟",
-            Illust: IllustPhone,
+            body: "أسئلة قصيرة ثم أدوات عالمية",
           },
         ].map((card) => (
           <a
@@ -64,18 +97,15 @@ export default function HomePage() {
                 : "ring-1 ring-black/5"
             }`}
           >
-            <card.Illust className="mx-auto h-36 w-full" />
-            <h2 className="mt-4 text-lg font-extrabold text-[var(--ink)]">
+            <h2 className="text-lg font-extrabold text-[var(--ink)]">
               {card.title}
             </h2>
-            <p className="aman-link mt-3 text-sm">
-              اعرف المزيد ↓
-            </p>
+            <p className="mt-2 text-sm text-[var(--muted)]">{card.body}</p>
+            <p className="aman-link mt-4 text-sm">اعرف المزيد ↓</p>
           </a>
         ))}
       </section>
 
-      {/* What is Aman */}
       <section id="what" className="mt-24 scroll-mt-28">
         <h2 className="text-3xl font-extrabold text-[var(--ink)] sm:text-4xl">
           ما هي خدمة أمان؟
@@ -88,7 +118,6 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* Who */}
       <section
         id="who"
         className="mt-20 grid scroll-mt-28 items-center gap-10 lg:grid-cols-2"
@@ -107,10 +136,30 @@ export default function HomePage() {
             البداية
           </Link>
         </div>
-        <IllustDesk className="mx-auto h-auto w-full max-w-sm" />
+        <ArtFrame className="mx-auto w-full max-w-sm">
+          <IllustSupportBlindfold className="h-auto w-full" />
+        </ArtFrame>
       </section>
 
-      {/* How it works */}
+      {/* Privacy support callout */}
+      <section className="mt-16 grid items-center gap-8 rounded-[28px] bg-white p-6 shadow-sm ring-1 ring-black/5 sm:grid-cols-[1fr_200px] sm:p-8">
+        <div>
+          <div className="mb-4 flex justify-center sm:justify-start">
+            <IllustProtectHand className="size-20" />
+          </div>
+          <h2 className="text-2xl font-extrabold text-[var(--ink)]">
+            نحن نحمي خصوصيتك
+          </h2>
+          <p className="mt-3 text-base leading-8 text-[var(--foreground)]">
+            لا تُرفع صورك إلى أمان. الأدوات العالمية تنشئ بصمة رقمية على جهازك
+            فقط. تذكّر: كل ما تشعر به أمر صحيح ومشروع. أنت ضحية إساءة استخدام.
+          </p>
+        </div>
+        <ArtFrame>
+          <IllustSupportBlindfold className="h-auto w-full" />
+        </ArtFrame>
+      </section>
+
       <section id="how" className="mt-24 scroll-mt-28">
         <h2 className="text-3xl font-extrabold text-[var(--ink)] sm:text-4xl">
           كيف تعمل خدمة أمان؟
@@ -138,13 +187,10 @@ export default function HomePage() {
         </ol>
         <div className="mt-8 rounded-2xl border border-red-300/70 bg-white p-5 text-sm leading-7 text-[var(--muted)]">
           <strong className="text-[var(--foreground)]">رجاءً تذكّر:</strong> لا
-          ترسل الصور أو الفيديوهات عبر واتساب أو البريد لأشخاص غير مختصين. بعد
-          إضافة البصمة الرقمية، قد تستعين المنصات بها لفحص خدماتها — فلا تعِد رفع
-          المحتوى بنفسك على الشبكات العامة.
+          ترسل الصور أو الفيديوهات عبر واتساب أو البريد لأشخاص غير مختصين.
         </div>
       </section>
 
-      {/* Not alone banner */}
       <section className="mt-20 overflow-hidden rounded-[28px] bg-[var(--accent-soft)] px-6 py-8 sm:px-10 sm:py-10">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
           <p className="max-w-2xl text-lg font-extrabold leading-8 text-[var(--ink)] sm:text-xl">
