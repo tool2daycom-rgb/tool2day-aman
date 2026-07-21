@@ -138,25 +138,45 @@ export function PathResult({ answers, onRestart }: Props) {
 
       <div className="mt-5 grid gap-3">
         {isAdult ? (
+          <a
+            href="https://stopncii.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-[22px] bg-[var(--accent)] px-5 py-4 text-white shadow-sm transition hover:brightness-110"
+          >
+            <span className="font-extrabold">افتح StopNCII.org الآن — للبالغين</span>
+            <span className="mt-1 block text-sm font-normal text-white/85">
+              الأداة الرسمية · ثم ارجع لشرح أمان إن احتجت
+            </span>
+          </a>
+        ) : null}
+        {isAdult ? (
           <Link
-            href="/stopncii"
+            href={`/stopncii${answers.countryId ? `?country=${answers.countryId}` : ""}`}
             className="block rounded-[22px] bg-white px-5 py-4 shadow-sm outline outline-black/6 transition hover:-translate-y-0.5"
           >
-            <span className="font-extrabold">StopNCII — للبالغين (18+)</span>
-            <span className="mt-1 block text-sm font-normal text-[var(--muted)]">
-              شرح عربي خطوة بخطوة لإنشاء البصمة الرقمية محلياً
-            </span>
+            <span className="font-extrabold">شرح StopNCII بالعربي داخل أمان</span>
           </Link>
         ) : null}
         {isMinor ? (
+          <a
+            href="https://takeitdown.ncmec.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-[22px] bg-[var(--ink)] px-5 py-4 text-white shadow-sm transition hover:brightness-110"
+          >
+            <span className="font-extrabold">افتح Take It Down الآن — للقاصرين</span>
+            <span className="mt-1 block text-sm font-normal text-white/85">
+              الأداة الرسمية من NCMEC
+            </span>
+          </a>
+        ) : null}
+        {isMinor ? (
           <Link
-            href="/take-it-down"
+            href={`/take-it-down${answers.countryId ? `?country=${answers.countryId}` : ""}`}
             className="block rounded-[22px] bg-white px-5 py-4 shadow-sm outline outline-black/6 transition hover:-translate-y-0.5"
           >
-            <span className="font-extrabold">Take It Down — للقاصرين</span>
-            <span className="mt-1 block text-sm font-normal text-[var(--muted)]">
-              أداة NCMEC لمن هم دون 18 سنة
-            </span>
+            <span className="font-extrabold">شرح Take It Down بالعربي داخل أمان</span>
           </Link>
         ) : null}
       </div>

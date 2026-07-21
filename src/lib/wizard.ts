@@ -53,3 +53,19 @@ export function clearAnswers() {
     /* ignore */
   }
 }
+
+/** Where the guide should send the user for image/video blackmail paths. */
+export function resolveToolPath(answers: WizardAnswers): string | null {
+  if (answers.safeNow === false) return null;
+  if (answers.situation !== "images") return null;
+  if (answers.ageGroup === "adult") {
+    const q = answers.countryId ? `?country=${answers.countryId}` : "";
+    return `/stopncii${q}`;
+  }
+  if (answers.ageGroup === "minor") {
+    const q = answers.countryId ? `?country=${answers.countryId}` : "";
+    return `/take-it-down${q}`;
+  }
+  return null;
+}
+

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AmanShell } from "@/components/aman-shell";
 import { ArtFrame } from "@/components/art-frame";
+import { GuideHelplines } from "@/components/guide-helplines";
 import { IllustProtectHand } from "@/components/illustrations";
 
 export const metadata: Metadata = {
@@ -11,10 +12,30 @@ export const metadata: Metadata = {
     "شرح عربي لكيفية استخدام StopNCII.org: إنشاء بصمة رقمية محلياً دون رفع الصورة الأصلية.",
 };
 
-export default function StopNciiPage() {
+type Props = {
+  searchParams: Promise<{ country?: string }>;
+};
+
+export default async function StopNciiPage({ searchParams }: Props) {
+  const { country } = await searchParams;
+
   return (
     <AmanShell narrow activeHref="/resources">
-      <p className="text-xs font-bold text-[var(--accent-dark)]">للبالغين · 18+</p>
+      <div className="mb-6 rounded-[22px] bg-[var(--accent-soft)] p-4 text-sm leading-7 text-[var(--ink)]">
+        وصلتَ إلى المسار المناسب للبالغين (18+). اضغط الزر الأخضر لفتح الأداة
+        الرسمية فوراً، أو اقرأ الشرح العربي أولاً.
+      </div>
+
+      <a
+        href="https://stopncii.org"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="aman-btn w-full text-center sm:w-auto"
+      >
+        افتح StopNCII.org الآن
+      </a>
+
+      <p className="mt-8 text-xs font-bold text-[var(--accent-dark)]">للبالغين · 18+</p>
       <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-[var(--ink)]">
         StopNCII — خطوة بخطوة
       </h1>
@@ -86,6 +107,8 @@ export default function StopNciiPage() {
           </li>
         ))}
       </ol>
+
+      <GuideHelplines countryFromQuery={country} />
 
       <div className="mt-8 flex flex-wrap gap-3">
         <a

@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { getCountry, searchCountries, type CountryId } from "@/lib/countries";
 import {
   clearAnswers,
   initialAnswers,
   loadAnswers,
+  resolveToolPath,
   saveAnswers,
   type AgeGroup,
   type Situation,
@@ -29,6 +31,7 @@ const secondaryBtn =
   "rounded-full bg-white px-4 py-2 text-sm font-semibold text-[var(--muted)] ring-1 ring-black/8 transition hover:text-[var(--foreground)]";
 
 export function GuideWizard() {
+  const router = useRouter();
   const [ready, setReady] = useState(false);
   const [step, setStep] = useState<Step>("safe");
   const [answers, setAnswers] = useState<WizardAnswers>(initialAnswers);
@@ -37,6 +40,13 @@ export function GuideWizard() {
   useEffect(() => {
     const loaded = loadAnswers();
     setAnswers(loaded);
+
+    const tool = resolveToolPath(loaded);
+    if (tool) {
+      router.replace(tool);
+      return;
+    }
+
     if (loaded.safeNow === false) setStep("result");
     else if (loaded.countryId && loaded.situation && loaded.ageGroup)
       setStep("result");
@@ -44,13 +54,32 @@ export function GuideWizard() {
     else if (loaded.countryId) setStep("situation");
     else if (loaded.safeNow === true) setStep("browsing");
     setReady(true);
-  }, []);
+  }, [router]);
 
   function update(patch: Partial<WizardAnswers>, next: Step) {
     const nextAnswers = { ...answers, ...patch };
     setAnswers(nextAnswers);
     saveAnswers(nextAnswers);
+
+    const tool = resolveToolPath(nextAnswers);
+    if (tool && next === "result") {
+      router.push(tool);
+      return;
+    }
     setStep(next);
+  }
+
+  function chooseAge(ageGroup: AgeGroup) {
+    const nextAnswers = { ...answers, ageGroup };
+    setAnswers(nextAnswers);
+    saveAnswers(nextAnswers);
+
+    const tool = resolveToolPath(nextAnswers);
+    if (tool) {
+      router.push(tool);
+      return;
+    }
+    setStep("result");
   }
 
   function restart() {
@@ -235,20 +264,29 @@ export function GuideWizard() {
               ? "هل الشخص المعني أقل من 18 سنة؟"
               : "هل عمرك أقل من 18 سنة؟"
           }
-          body="هذا السؤال يحدد الأداة المناسبة فقط. لا نطلب تاريخ ميلادك."
+          body="هذا السؤال يحدد الأداة المناسبة فوراً: البالغون → StopNCII · القاصرون → Take It Down."
         >
           {(
             [
-              { id: "adult" as AgeGroup, label: "18 سنة أو أكثر" },
-              { id: "minor" as AgeGroup, label: "أقل من 18 سنة" },
-              { id: "unsure" as AgeGroup, label: "غير متأكد / أفضل المسارين" },
+              {
+                id: "adult" as AgeGroup,
+                label: "18 سنة أو أكثر → StopNCII",
+              },
+              {
+                id: "minor" as AgeGroup,
+                label: "أقل من 18 سنة → Take It Down",
+              },
+              {
+                id: "unsure" as AgeGroup,
+                label: "غير متأكد / أفضل المسارين",
+              },
             ] as const
           ).map((item) => (
             <button
               key={item.id}
               type="button"
               className={choiceBtn}
-              onClick={() => update({ ageGroup: item.id }, "result")}
+              onClick={() => chooseAge(item.id)}
             >
               {item.label}
             </button>

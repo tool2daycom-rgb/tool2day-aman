@@ -1,15 +1,38 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AmanShell } from "@/components/aman-shell";
+import { GuideHelplines } from "@/components/guide-helplines";
 
 export const metadata: Metadata = {
   title: "Take It Down بالعربي — للقاصرين",
 };
 
-export default function TakeItDownPage() {
+type Props = {
+  searchParams: Promise<{ country?: string }>;
+};
+
+export default async function TakeItDownPage({ searchParams }: Props) {
+  const { country } = await searchParams;
+
   return (
     <AmanShell narrow activeHref="/resources">
-      <p className="text-xs font-bold text-[var(--accent-dark)]">للقاصرين · أقل من 18</p>
+      <div className="mb-6 rounded-[22px] bg-[var(--accent-soft)] p-4 text-sm leading-7 text-[var(--ink)]">
+        وصلتَ إلى المسار المناسب للقاصرين (أقل من 18). اضغط الزر لفتح Take It
+        Down الرسمي فوراً، أو اقرأ الشرح العربي أولاً.
+      </div>
+
+      <a
+        href="https://takeitdown.ncmec.org"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="aman-btn w-full text-center sm:w-auto"
+      >
+        افتح Take It Down الآن
+      </a>
+
+      <p className="mt-8 text-xs font-bold text-[var(--accent-dark)]">
+        للقاصرين · أقل من 18
+      </p>
       <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-[var(--ink)]">
         Take It Down — خطوة بخطوة
       </h1>
@@ -41,6 +64,8 @@ export default function TakeItDownPage() {
           </li>
         ))}
       </ol>
+
+      <GuideHelplines countryFromQuery={country} />
 
       <div className="mt-8 flex flex-wrap gap-3">
         <a
