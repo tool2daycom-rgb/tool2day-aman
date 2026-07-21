@@ -43,8 +43,8 @@ export default function HomePage() {
       <section className="mt-16 grid gap-5 md:grid-cols-2">
         <article className="overflow-hidden rounded-[24px] bg-[#f3f5f4] ring-1 ring-black/5">
           <div className="h-1.5 bg-[var(--accent)]" />
-          <div className="grid gap-4 p-5 sm:grid-cols-[140px_1fr] sm:items-center">
-            <ArtFrame>
+          <div className="grid gap-4 p-5 sm:grid-cols-[148px_1fr] sm:items-center">
+            <ArtFrame className="shrink-0">
               <Image
                 src="/illustrations/empathy-crying.png"
                 alt="رسم لفتاة تبكي — الدعم موجود"
@@ -53,7 +53,7 @@ export default function HomePage() {
                 className="h-auto w-full bg-white object-contain p-2"
               />
             </ArtFrame>
-            <p className="text-sm leading-7 text-[var(--foreground)]">
+            <p className="min-w-0 text-sm leading-7 text-[var(--foreground)]">
               آلاف الضحايا حول العالم مرّوا بما تمرّين به أو تمرّ به. الدعم موجود،
               والخطوة الأولى لا تتطلب مشاركة صور مع أحد.
             </p>
@@ -61,8 +61,8 @@ export default function HomePage() {
         </article>
         <article className="overflow-hidden rounded-[24px] bg-[#f3f5f4] ring-1 ring-black/5">
           <div className="h-1.5 bg-[var(--accent)]" />
-          <div className="grid gap-4 p-5 sm:grid-cols-[140px_1fr] sm:items-center">
-            <ArtFrame>
+          <div className="grid gap-4 p-5 sm:grid-cols-[148px_1fr] sm:items-center">
+            <ArtFrame className="shrink-0">
               <Image
                 src="/illustrations/empathy-hands.png"
                 alt="رسم لامرأة تغطي وجهها — مشاعرك صحيحة"
@@ -71,7 +71,7 @@ export default function HomePage() {
                 className="h-auto w-full bg-white object-contain p-2"
               />
             </ArtFrame>
-            <p className="text-sm leading-7 text-[var(--foreground)]">
+            <p className="min-w-0 text-sm leading-7 text-[var(--foreground)]">
               مشاعرك صحيحة ومشروعة. أنت ضحية إساءة استخدام — ولست مسؤولاً عمّا
               فعله المعتدي.
             </p>

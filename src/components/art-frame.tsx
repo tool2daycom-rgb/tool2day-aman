@@ -10,9 +10,9 @@ type FrameProps = {
 export function ArtFrame({ children, className = "" }: FrameProps) {
   return (
     <div
-      className={`overflow-hidden rounded-2xl bg-white ring-2 ring-[var(--accent)]/35 ${className}`}
+      className={`relative isolate overflow-hidden rounded-2xl bg-white ring-2 ring-[var(--accent)]/35 ${className}`}
     >
-      {children}
+      <div className="relative z-0 overflow-hidden bg-white">{children}</div>
     </div>
   );
 }
