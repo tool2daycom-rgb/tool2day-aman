@@ -246,13 +246,13 @@ export default function ResourcesPage() {
       <div className="mt-6 grid gap-4">
         {[
           {
-            title: "Take It Down — شرح عربي داخل أمان",
+            title: "شرح عربي للقاصرين داخل أمان",
             body: "خطوات استخدام الأداة للقاصرين.",
             href: "/take-it-down",
             cta: "افتح الشرح",
           },
           {
-            title: "StopNCII — للبالغين (18+)",
+            title: "للبالغين (18+)",
             body: "إذا كان العمر 18 أو أكثر.",
             href: "/stopncii",
             cta: "افتح الشرح",

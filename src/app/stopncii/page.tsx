@@ -30,7 +30,7 @@ export default async function StopNciiPage({ searchParams }: Props) {
 
       <p className="mt-8 text-xs font-bold text-[var(--accent-dark)]">للبالغين · 18+</p>
       <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-[var(--ink)]">
-        StopNCII — خطوة بخطوة
+        خطوة بخطوة
       </h1>
       <p className="mt-4 text-base leading-8 text-[var(--foreground)]">
         StopNCII.org أداة عالمية من SWGfL تساعد البالغين على منع إعادة نشر صور

@@ -27,7 +27,7 @@ export default async function TakeItDownPage({ searchParams }: Props) {
         للقاصرين · أقل من 18
       </p>
       <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-[var(--ink)]">
-        Take It Down — خطوة بخطوة
+        خطوة بخطوة
       </h1>
       <p className="mt-4 text-base leading-8 text-[var(--foreground)]">
         Take It Down خدمة من المركز الوطني للأطفال المفقودين والمستغلين (NCMEC)
