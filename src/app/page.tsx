@@ -7,15 +7,18 @@ import { IllustProtectHand } from "@/components/illustrations";
 export default function HomePage() {
   return (
     <AmanShell activeHref="/">
-      {/* Centered Tool2Day mark — top of page */}
-      <div className="mb-10 flex justify-center sm:mb-12">
+      {/* Centered brand lockup — أمان above Tool2Day mark */}
+      <div className="mb-10 flex flex-col items-center sm:mb-12">
+        <p className="text-center text-5xl font-extrabold leading-none tracking-tight text-[var(--ink)] sm:text-6xl lg:text-7xl">
+          ٲمـٲنَ
+        </p>
         <Image
           src="/brand/tool2day-eyes-leaves.png"
           alt="Tool2Day"
           width={1497}
           height={307}
           priority
-          className="h-auto w-full max-w-md object-contain sm:max-w-lg"
+          className="mt-4 h-auto w-full max-w-md object-contain sm:mt-5 sm:max-w-lg"
         />
       </div>
 
