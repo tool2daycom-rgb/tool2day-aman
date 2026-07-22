@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
+import { amanKeywords } from "@/lib/aman-keywords";
 import "./globals.css";
 
 const cairo = Cairo({
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   },
   description:
     "منصة عربية تفاعلية توجّه ضحايا الابتزاز والانتهاك الرقمي خطوة بخطوة — بدون طلب صور أو تخزين بيانات شخصية.",
+  keywords: amanKeywords,
   icons: {
     icon: [
       { url: "/brand/leaves-mark.png", type: "image/png", sizes: "256x256" },
