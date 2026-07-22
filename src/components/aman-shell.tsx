@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { QuickExit } from "@/components/quick-exit";
 
 const nav = [
@@ -27,9 +28,14 @@ export function AmanShell({
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-8">
           <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             <Link href="/" className="flex items-center gap-2.5 pe-2">
-              <span className="flex size-9 items-center justify-center rounded-lg bg-[var(--ink)] text-sm font-extrabold text-white">
-                أ
-              </span>
+              <Image
+                src="/brand/leaves-mark.png"
+                alt=""
+                width={40}
+                height={40}
+                className="size-9 object-contain sm:size-10"
+                priority
+              />
               <span className="text-lg font-extrabold tracking-tight text-[var(--ink)]">
                 أمان
               </span>
