@@ -17,8 +17,11 @@ export const metadata: Metadata = {
   description:
     "منصة عربية تفاعلية توجّه ضحايا الابتزاز والانتهاك الرقمي خطوة بخطوة — بدون طلب صور أو تخزين بيانات شخصية.",
   icons: {
-    icon: [{ url: "/brand/leaves-mark.png", type: "image/png" }],
-    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+    icon: [
+      { url: "/brand/leaves-mark.png", type: "image/png", sizes: "any" },
+      { url: "/favicon.ico", sizes: "48x48" },
+    ],
+    apple: "/apple-icon.png",
   },
   openGraph: {
     title: "أمان · Tool2Day",
