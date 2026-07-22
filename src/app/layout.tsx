@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/brand/leaves-mark.png", type: "image/png", sizes: "256x256" },
-      { url: "/icon.png", type: "image/png", sizes: "64x64" },
+      { url: "/icon.png", type: "image/png", sizes: "128x128" },
     ],
     shortcut: "/brand/leaves-mark.png",
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
