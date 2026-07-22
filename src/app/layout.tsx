@@ -18,8 +18,8 @@ export const metadata: Metadata = {
     "منصة عربية تفاعلية توجّه ضحايا الابتزاز والانتهاك الرقمي خطوة بخطوة — بدون طلب صور أو تخزين بيانات شخصية.",
   icons: {
     icon: [
-      { url: "/brand/leaves-mark.png", type: "image/png", sizes: "192x192" },
-      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+      { url: "/brand/leaves-mark.png", type: "image/png", sizes: "256x256" },
+      { url: "/icon.png", type: "image/png", sizes: "64x64" },
     ],
     shortcut: "/brand/leaves-mark.png",
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
