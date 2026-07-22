@@ -1,31 +1,39 @@
 import Link from "next/link";
 import Image from "next/image";
 import { AmanShell } from "@/components/aman-shell";
-import { ArtFrame } from "@/components/art-frame";
+import { ArtFrame, LineArtPhoto } from "@/components/art-frame";
 import { IllustProtectHand } from "@/components/illustrations";
 
 export default function HomePage() {
   return (
     <AmanShell activeHref="/">
+      {/* Centered Tool2Day mark — top of page */}
+      <div className="mb-10 flex justify-center sm:mb-12">
+        <Image
+          src="/brand/tool2day-eyes-leaves.png"
+          alt="Tool2Day"
+          width={1497}
+          height={307}
+          priority
+          className="h-auto w-full max-w-md object-contain sm:max-w-lg"
+        />
+      </div>
+
       {/* Hero */}
       <section className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-        <div className="order-2 flex flex-col items-center lg:order-1">
-          <p className="text-center text-5xl font-extrabold leading-none tracking-tight text-[var(--ink)] sm:text-6xl lg:text-7xl">
-            أمان
-          </p>
-          <div className="mt-5 w-full max-w-lg px-2 sm:mt-6">
-            <Image
-              src="/brand/tool2day-eyes-leaves.png"
-              alt="Tool2Day"
-              width={1497}
-              height={307}
-              priority
-              className="h-auto w-full object-contain"
-            />
-          </div>
+        <div className="order-2 lg:order-1">
+          <LineArtPhoto
+            src="/illustrations/portrait-worried.png"
+            alt="رسم لفتاة تشعر بالقلق — لستِ وحدك ونستطيع مساعدتك خطوة بخطوة"
+            priority
+            className="mx-auto max-w-md"
+          />
         </div>
         <div className="order-1 lg:order-2">
-          <h1 className="max-w-xl text-[1.85rem] font-extrabold leading-[1.45] tracking-tight text-[var(--ink)] sm:text-4xl lg:text-[2.55rem] lg:leading-[1.4]">
+          <p className="text-sm font-bold tracking-[0.2em] text-[var(--accent-dark)]">
+            أمان
+          </p>
+          <h1 className="mt-5 max-w-xl text-[1.85rem] font-extrabold leading-[1.45] tracking-tight text-[var(--ink)] sm:text-4xl lg:text-[2.55rem] lg:leading-[1.4]">
             <span className="block">
               أمانك الرقمي{" "}
               <span className="text-[var(--accent)]">وحقك محفوظ</span>
