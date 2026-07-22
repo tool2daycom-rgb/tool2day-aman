@@ -31,9 +31,9 @@ export function AmanShell({
               <Image
                 src="/brand/leaves-mark.png"
                 alt=""
-                width={56}
-                height={56}
-                className="size-12 object-contain sm:size-14"
+                width={64}
+                height={64}
+                className="size-14 object-contain sm:size-16"
                 priority
               />
               <span className="text-lg font-extrabold tracking-tight text-[var(--ink)]">
